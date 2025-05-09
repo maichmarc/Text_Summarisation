@@ -31,16 +31,17 @@ class ModelTrainer:
             logging_steps=self.config.logging_steps,
             eval_strategy=self.config.eval_strategy, 
             eval_steps=self.config.eval_steps, 
-            save_steps=1e6,
+            save_steps=5e-5,
             run_name="pegasus-textsummarizer-run1",
-            gradient_accumulation_steps=self.config.gradient_accumulation_steps
+            gradient_accumulation_steps=self.config.gradient_accumulation_steps,
+            report_to = self.config.report_to
             )
 
         trainer = Trainer(model=model_pegasus, 
                             args=trainer_args,
                             tokenizer=tokenizer, 
                             data_collator=seq2seq_data_collator,
-                            train_dataset=dataset_samsum_pt["test"], 
+                            train_dataset=dataset_samsum_pt["train"], 
                             eval_dataset=dataset_samsum_pt["validation"])
         
         trainer.train()

@@ -37,6 +37,7 @@ class ModelTrainerConfig:
     eval_steps: int
     save_steps: float
     gradient_accumulation_steps: int
+    report_to: str
 
 
 @dataclass(frozen=True)

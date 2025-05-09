@@ -76,7 +76,8 @@ class ConfigurationManager:
             eval_strategy = params.eval_strategy,
             eval_steps = params.eval_steps,
             save_steps = params.save_steps,
-            gradient_accumulation_steps = params.gradient_accumulation_steps
+            gradient_accumulation_steps = params.gradient_accumulation_steps,
+            report_to = params.report_to
         )
 
         return model_trainer_config
